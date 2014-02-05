@@ -1,5 +1,5 @@
 cd ${0%/*}/unity
-rake
+rake --trace
 RET=$?
 cd ..
 exit $RET
