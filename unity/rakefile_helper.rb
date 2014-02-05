@@ -24,7 +24,7 @@ module RakefileHelpers
   end
   
   def get_unit_test_files
-    path = $cfg['compiler']['unit_tests_path'] + 'Test*' + C_EXTENSION
+    path = $cfg['compiler']['unit_tests_path'] + '**/Test*' + C_EXTENSION
     path.gsub!(/\\/, '/')
     FileList.new(path)
   end
