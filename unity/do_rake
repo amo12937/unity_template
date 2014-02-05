@@ -1,0 +1,6 @@
+#!/bin/sh
+cd ${0%/*}
+LC_ALL=ja_JP.UTF-8 rake --trace
+RET=$?
+cd -
+exit $RET

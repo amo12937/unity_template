@@ -1,4 +1,4 @@
-
+// 日本語
 #include "ProductionCode.h"
 #include "unity.h"
 
