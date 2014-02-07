@@ -1144,3 +1144,22 @@ int UnityEnd(void)
     UNITY_PRINT_EOL;
     return Unity.TestFailures;
 }
+
+// ------- original source START -------
+static int _argc = 0;
+char **_argv = NULL;
+
+void unity_set_arguments(int argc, char **argv) {
+    if (_argc) return;
+    _argc = argc;
+    _argv = argv;
+}
+
+int unity_get_argc(void) {
+    return _argc;
+}
+
+char **unity_get_argv(void) {
+    return _argv;
+}
+// ------- original source  END  -------

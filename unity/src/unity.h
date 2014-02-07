@@ -242,4 +242,11 @@
 #define TEST_ASSERT_DOUBLE_IS_INF_MESSAGE(actual, message)                                         UNITY_TEST_ASSERT_DOUBLE_IS_INF(actual, __LINE__, message)
 #define TEST_ASSERT_DOUBLE_IS_NEG_INF_MESSAGE(actual, message)                                     UNITY_TEST_ASSERT_DOUBLE_IS_NEG_INF(actual, __LINE__, message)
 #define TEST_ASSERT_DOUBLE_IS_NAN_MESSAGE(actual, message)                                         UNITY_TEST_ASSERT_DOUBLE_IS_NAN(actual, __LINE__, message)
+
+// ------- original header START -------
+void unity_set_arguments(int argc, char **argv);
+int unity_get_argc(void);
+char **unity_get_argv(void);
+// ------- original header  END  -------
+
 #endif

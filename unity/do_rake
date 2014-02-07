@@ -1,6 +1,7 @@
 #!/bin/sh
+ARGS="$*"
 cd ${0%/*}
-LC_ALL=ja_JP.UTF-8 rake --trace
+LC_ALL=ja_JP.UTF-8 rake --trace args="$ARGS"
 RET=$?
 cd -
 exit $RET

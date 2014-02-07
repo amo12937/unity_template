@@ -207,7 +207,12 @@ module RakefileHelpers
       
       # Execute unit test and generate results file
       simulator = build_simulator_fields
-      executable = $cfg['linker']['bin_files']['destination'] + test_base + $cfg['linker']['bin_files']['extension']
+      executable_pre = $cfg['linker']['bin_files']['destination'] + test_base + $cfg['linker']['bin_files']['extension']
+      if ENV['args'].nil?
+        executable = executable_pre
+      else
+        executable = "#{executable_pre} #{ENV['args']}"
+      end
       if simulator.nil?
         cmd_str = executable
       else
