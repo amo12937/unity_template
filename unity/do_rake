@@ -1,7 +1,10 @@
 #!/bin/sh
+LIB_PATH=$1
+LIB_NAME=$2
+shift 2
 ARGS="$*"
 cd ${0%/*}
-LC_ALL=ja_JP.UTF-8 rake --trace args="$ARGS"
+LC_ALL=ja_JP.UTF-8 rake --trace linker_option="-L${LIB_PATH} -l${LIB_NAME}" args="$ARGS"
 RET=$?
 cd -
 exit $RET

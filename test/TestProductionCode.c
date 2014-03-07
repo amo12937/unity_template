@@ -1,6 +1,6 @@
 // 日本語
 #include "ProductionCode.h"
-#include "unity.h"
+#include "unity.h" /* RAKE_MARKER:do_compile */
 
 //sometimes you may want to get at local data in a module.
 //for example: If you plan to pass by reference, this could be useful

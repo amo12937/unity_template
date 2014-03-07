@@ -39,11 +39,12 @@ module RakefileHelpers
     includes = []
     lines = File.readlines(filename)
     lines.each do |line|
-      m = line.match(/^\s*#include\s+\"\s*(.+\.[hH])\s*\"/)
+      m = line.match(/^\s*#include\s+\"\s*(.+\.[hH])\s*\" \s*\/\*\s*RAKE_MARKER:do_compile\s*\*\//)
       if not m.nil?
         includes << m[1]
       end
     end
+    puts includes
     return includes
   end
 
@@ -110,9 +111,9 @@ module RakefileHelpers
     return {:command => command, :options => options, :includes => includes}
   end
   
-  def link_it(exe_name, obj_list)
+  def link_it(exe_name, obj_list, linker_option = "")
     linker = build_linker_fields
-    cmd_str = "#{linker[:command]}#{linker[:options]}#{linker[:includes]} " +
+    cmd_str = "#{linker[:command]}" + "#{linker[:options]}#{linker[:includes]} " + linker_option + " " + 
       (obj_list.map{|obj|"#{$cfg['linker']['object_files']['path']}#{obj} "}).join +
       $cfg['linker']['bin_files']['prefix'] + ' ' +
       $cfg['linker']['bin_files']['destination'] +
@@ -203,7 +204,7 @@ module RakefileHelpers
       obj_list << compile(test, test_defines)
       
       # Link the test executable
-      link_it(test_base, obj_list)
+      link_it(test_base, obj_list, ENV['linker_option'])
       
       # Execute unit test and generate results file
       simulator = build_simulator_fields

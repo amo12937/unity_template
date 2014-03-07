@@ -1,6 +1,6 @@
 
 #include "ProductionCode2.h"
-#include "unity.h"
+#include "unity.h" /* RAKE_MARKER:do_compile */
 
 /* These should be ignored because they are commented out in various ways:
 #include "whatever.h" 
